@@ -4,7 +4,7 @@
     "description": "A dummy website with the Node.js http module",
     "main": "index.js",
     "scripts": {
-        "start": "tsc --target es2015 --moduleResolution nodenext --module NodeNext ./index.ts && ./launch.sh"
+        "start": "tsc --target es2015 --moduleResolution nodenext --module NodeNext ./src/index.ts && ./launch.sh"
     },
     "keywords": [],
     "author": "",

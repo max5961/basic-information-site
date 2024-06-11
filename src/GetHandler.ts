@@ -15,9 +15,9 @@ export default class GetHandler {
 
     async handle(route: string): Promise<void> {
         if (route === "/") {
-            this.path = path.join(__dirname, "./index.html");
+            this.path = path.join(__dirname, "html", "index.html");
         } else {
-            this.path = path.join(__dirname, route) + ".html";
+            this.path = path.join(__dirname, "html", route) + ".html";
         }
 
         const file = await fs.readFile(this.path, "utf-8");
@@ -38,7 +38,7 @@ export default class GetHandler {
     static async handleNotFound(app: App): Promise<void> {
         app.use(async (request: Request, response: Response) => {
             const notFound = await fs.readFile(
-                path.join(__dirname, "./404.html"),
+                path.join(__dirname, "html", "./404.html"),
                 "utf-8",
             );
             response.status(404).send(notFound);

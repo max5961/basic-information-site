@@ -1,3 +1,3 @@
 #!/bin/bash
 
-PORT=8080 node ./index.js
+PORT=8080 node ./src/index.js

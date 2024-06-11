@@ -1,2 +1,3 @@
 # basic-information-site
-A dummy website with the Node.js http module
+A dummy website built to familiarize myself basic concepts in the Express
+framework.
