@@ -1,0 +1,15 @@
+{
+    "name": "basic-information-site",
+    "version": "1.0.0",
+    "description": "A dummy website with the Node.js http module",
+    "main": "index.js",
+    "scripts": {
+        "start": "tsc --target es2015 --moduleResolution nodenext --module NodeNext ./index.ts && ./launch.sh"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@types/node": "^20.14.2"
+    }
+}
