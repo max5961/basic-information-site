@@ -59,7 +59,7 @@ class GetHandler {
                 this.path = path.join(__dirname, route) + ".html";
             }
             const file = yield fs.readFile(this.path, "utf-8");
-            this.response.send(file);
+            this.response.status(200).send(file);
         });
     }
 }

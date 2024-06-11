@@ -31,7 +31,7 @@ class GetHandler {
         }
 
         const file = await fs.readFile(this.path, "utf-8");
-        this.response.send(file);
+        this.response.status(200).send(file);
     }
 }
 
