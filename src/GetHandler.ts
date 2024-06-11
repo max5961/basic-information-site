@@ -20,8 +20,12 @@ export default class GetHandler {
             this.path = path.join(__dirname, "html", route) + ".html";
         }
 
-        const file = await fs.readFile(this.path, "utf-8");
-        this.response.status(200).send(file);
+        try {
+            const file = await fs.readFile(this.path, "utf-8");
+            this.response.status(200).send(file);
+        } catch (err) {
+            this.response.status(404).send("Could not load file");
+        }
     }
 
     static handleGetRequests(routes: string[], app: App): void {
