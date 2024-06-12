@@ -3,6 +3,8 @@ import { App } from "./index";
 import * as path from "path";
 import * as fs from "fs/promises";
 
+const publicDir = path.join(__dirname, "../public");
+
 export default class GetHandler {
     private request: Request;
     private response: Response;
@@ -15,9 +17,9 @@ export default class GetHandler {
 
     async handle(route: string): Promise<void> {
         if (route === "/") {
-            this.path = path.join(__dirname, "html", "index.html");
+            this.path = path.join(publicDir, "html", "index.html");
         } else {
-            this.path = path.join(__dirname, "html", route) + ".html";
+            this.path = path.join(publicDir, "html", route) + ".html";
         }
 
         try {
@@ -42,7 +44,7 @@ export default class GetHandler {
     static async handleNotFound(app: App): Promise<void> {
         app.use(async (request: Request, response: Response) => {
             const notFound = await fs.readFile(
-                path.join(__dirname, "html", "./404.html"),
+                path.join(publicDir, "html", "./404.html"),
                 "utf-8",
             );
             response.status(404).send(notFound);

@@ -1,0 +1,39 @@
+html {
+    height: 100%;
+    width: 100%;
+    display: grid;
+}
+
+body {
+    display: grid;
+    background-color: lightcoral;
+    justify-items: center;
+}
+
+button {
+    padding: 0;
+    width: 80%;
+    margin: 1rem;
+    background-color: #40adaaff;
+    transition: 100ms background-color ease-in-out;
+}
+
+button:hover {
+    background-color: #5a93aa;
+}
+
+a {
+    display: grid;
+    place-items: center center;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    font-size: 2rem;
+    text-decoration-color: black;
+}
+
+p {
+    display: grid;
+    place-items: center center;
+    font-size: 3rem;
+}
