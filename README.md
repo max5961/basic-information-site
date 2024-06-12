@@ -6,8 +6,9 @@ framework.
 
 ```sh
 git clone https://github.com/max5961/basic-information-site
+cd basic-information-site
 npm install
-./launch.sh
+npm run start
 ```
 Then go to
 
