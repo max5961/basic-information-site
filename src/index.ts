@@ -6,9 +6,7 @@ const PORT: number | string = process.env.PORT || 8080;
 const app = express();
 
 const publicDir = path.join(__dirname, "../public");
-console.log(path.join(publicDir, "style"));
-app.use(express.static(path.join(publicDir, "style")));
-app.use(express.static(path.join(publicDir, "html")));
+app.use("/static/style", express.static(path.join(publicDir, "style")));
 
 const routes = ["/", "/about", "/contact-me"];
 GetHandler.handleGetRequests(routes, app);

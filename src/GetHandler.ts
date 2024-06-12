@@ -1,7 +1,6 @@
-import { Request, Response } from "express";
+import express, { Request, Response } from "express";
 import { App } from "./index";
 import * as path from "path";
-import * as fs from "fs/promises";
 
 const publicDir = path.join(__dirname, "../public");
 
@@ -15,7 +14,7 @@ export default class GetHandler {
         this.response = response;
     }
 
-    async handle(route: string): Promise<void> {
+    handle(route: string): void {
         if (route === "/") {
             this.path = path.join(publicDir, "html", "index.html");
         } else {
@@ -23,8 +22,7 @@ export default class GetHandler {
         }
 
         try {
-            const file = await fs.readFile(this.path, "utf-8");
-            this.response.status(200).send(file);
+            this.response.status(200).sendFile(this.path);
         } catch (err) {
             this.response.status(404).send("Could not load file");
         }
@@ -42,12 +40,12 @@ export default class GetHandler {
     }
 
     static async handleNotFound(app: App): Promise<void> {
-        app.use(async (request: Request, response: Response) => {
-            const notFound = await fs.readFile(
-                path.join(publicDir, "html", "./404.html"),
-                "utf-8",
-            );
-            response.status(404).send(notFound);
+        app.use("/unhandled", express.static(path.join(publicDir, "style")));
+
+        const unhandledDir = path.join(publicDir, "unhandled");
+        app.use((request: Request, response: Response) => {
+            const html = path.join(unhandledDir, "index.html");
+            response.status(404).sendFile(html);
         });
     }
 }
